@@ -3,6 +3,7 @@
 
 #ifndef USED_OPENCV
 #include <opencv2/opencv.hpp>
+using namespace cv;
 #endif // USED_OPENCV
 
 #include <deque>
@@ -10,7 +11,7 @@ using namespace std;
 
 class ExAlgo{
 public:
-    static void ImageAvgDenoing(deque<cv::Mat> imageSeq, cv::Mat image);
+    static void ImageAvgDenoising(deque<cv::Mat> imageSeq, cv::Mat image);
 
     static void CalcGrayImageHist(cv::Mat image, cv::Mat& hist);
 

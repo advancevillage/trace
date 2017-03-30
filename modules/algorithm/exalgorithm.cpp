@@ -2,7 +2,7 @@
 #include "exalgorithm.h"
 #endif // EXTEND_ALGORITHM
 
-void ExAlgo::ImageAvgDenoing(deque<cv::Mat> imageSeq, cv::Mat image){
+void ExAlgo::ImageAvgDenoising(deque<cv::Mat> imageSeq, cv::Mat image){
     int rows = imageSeq[0].rows;
     int cols = imageSeq[0].cols;
     int counts = imageSeq.size();
