@@ -25,5 +25,5 @@ void VideoController::SetCurFrame(const cv::Mat frame){
 
 void VideoController::ShowWindow(){
     cv::imshow(this->win_id, this->cur_frame);
-    cv::waitKey(10);
+    cv::waitKey(5);
 }
