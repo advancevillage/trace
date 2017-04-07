@@ -14,6 +14,10 @@ ObjectNode::ObjectNode(const Object& obj, const int id, const string name):Objec
 
 }
 
+ObjectNode::ObjectNode(Object& obj, const int id):Object(obj), _id(id),_name("common"){
+
+}
+
 ObjectNode::ObjectNode(const int x, const int y, const int width, const int height, const cv::Scalar color, const bool ishow, const int id, const string name):
     Object(x, y, width, height, color, ishow),_id(id), _name(name){
 
@@ -25,7 +29,7 @@ ObjectNode::ObjectNode(const ObjectNode& objnode){
     this->_width = objnode.GetWidth();
     this->_height = objnode.GetHeight();
     this->_color = objnode.GetColor();
-    this->_ishow = objnode.GetIshow();
+    this->_ishow = objnode.GetShow();
     this->_id = objnode.GetID();
     this->_name = objnode.GetName();
 }
@@ -36,7 +40,7 @@ ObjectNode::ObjectNode(ObjectNode& objnode){
     this->_width = objnode.GetWidth();
     this->_height = objnode.GetHeight();
     this->_color = objnode.GetColor();
-    this->_ishow = objnode.GetIshow();
+    this->_ishow = objnode.GetShow();
     this->_id = objnode.GetID();
     this->_name = objnode.GetName();
 }
@@ -47,7 +51,7 @@ ObjectNode::ObjectNode(const Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
     this->_id = -1;
     this->_name = "null";
 }
@@ -58,7 +62,7 @@ ObjectNode::ObjectNode(Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
     this->_id = -1;
     this->_name = "null";
 }
@@ -69,7 +73,7 @@ void ObjectNode::operator=(const ObjectNode& objnode){
     this->_width = objnode.GetWidth();
     this->_height = objnode.GetHeight();
     this->_color = objnode.GetColor();
-    this->_ishow = objnode.GetIshow();
+    this->_ishow = objnode.GetShow();
     this->_id = objnode.GetID();
     this->_name = objnode.GetName();
 }
@@ -80,7 +84,7 @@ void ObjectNode::operator=(ObjectNode& objnode){
     this->_width = objnode.GetWidth();
     this->_height = objnode.GetHeight();
     this->_color = objnode.GetColor();
-    this->_ishow = objnode.GetIshow();
+    this->_ishow = objnode.GetShow();
     this->_id = objnode.GetID();
     this->_name = objnode.GetName();
 }
@@ -91,7 +95,7 @@ void ObjectNode::operator=(const Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
     this->_id = -1;
     this->_name = "null";
 }
@@ -102,7 +106,7 @@ void ObjectNode::operator=(Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
     this->_id = -1;
     this->_name = "null";
 }

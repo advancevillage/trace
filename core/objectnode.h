@@ -5,8 +5,8 @@
 #include "object.h"
 #endif // __OBJECT__
 
-#ifndef __USERD__STRING__
-#define __USERD__STRING__
+#ifndef __USED__STRING__
+#define __USED__STRING__
 #include <string>
 using namespace std;
 #endif // __USERD__STRING__
@@ -19,6 +19,7 @@ protected:
 public:
     ObjectNode();
     ObjectNode(const int id, const string name);
+    ObjectNode(Object& obj, const int id);
     ObjectNode(const Object& obj, const int id, const string name);
     ObjectNode(const int x, const int y, const int width, const int height, const cv::Scalar color, const bool ishow, const int id, const string name);
     ObjectNode(const ObjectNode& objnode);

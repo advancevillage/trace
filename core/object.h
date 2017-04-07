@@ -36,8 +36,8 @@ public:
     int GetHeight()const;
     void SetColor(const cv::Scalar color);
     cv::Scalar GetColor()const;
-    void SetIshow(const bool ishow);
-    bool GetIshow()const;
+    void SetShow(const bool ishow);
+    bool GetShow()const;
     void SetPoint(cv::Point pos);
     void SetPoint(const int x, const int y);
     cv::Point GetPoint()const;

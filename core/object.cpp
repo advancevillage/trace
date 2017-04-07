@@ -15,7 +15,7 @@ Object::Object(Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
 }
 
 Object::Object(const Object& obj){
@@ -24,7 +24,7 @@ Object::Object(const Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
 }
 
 void Object::operator=(Object& obj){
@@ -33,7 +33,7 @@ void Object::operator=(Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
 }
 
 void Object::operator=(const Object& obj){
@@ -42,7 +42,7 @@ void Object::operator=(const Object& obj){
     this->_width = obj.GetWidth();
     this->_height = obj.GetHeight();
     this->_color = obj.GetColor();
-    this->_ishow = obj.GetIshow();
+    this->_ishow = obj.GetShow();
 }
 
 Object::~Object(){
@@ -89,11 +89,11 @@ cv::Scalar Object::GetColor()const{
     return this->_color;
 }
 
-void Object::SetIshow(const bool ishow){
+void Object::SetShow(const bool ishow){
     this->_ishow = ishow;
 }
 
-bool Object::GetIshow()const{
+bool Object::GetShow()const{
     return this->_ishow;
 }
 
