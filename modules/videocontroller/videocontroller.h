@@ -7,8 +7,8 @@
 using namespace cv;
 #endif
 
-#ifndef __USERD__STRING__
-#define __USERD__STRING__
+#ifndef __USED__STRING__
+#define __USED__STRING__
 #include <string>
 using namespace std;
 #endif // __USERD__STRING__
