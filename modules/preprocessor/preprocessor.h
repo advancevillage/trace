@@ -28,6 +28,12 @@ public:
 public:
     bool Full()const;
     bool Empty()const;
+    int GetSize()const;
+    void Add(cv::Mat orgframe);
+    void SetBase(const unsigned int base);
+    unsigned int GetBase()const;
+    void ImageAvg();
+    cv::Mat GetFrame()const;
 
 };
 

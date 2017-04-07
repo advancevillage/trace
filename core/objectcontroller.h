@@ -10,6 +10,7 @@
 #endif // __OBJECT__NODE__
 
 #ifndef __USED__DEQUE__
+#define __USED__DEQUE__
 #include <deque>
 using namespace std;
 #endif // __USED__DEQUE__
