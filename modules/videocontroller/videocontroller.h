@@ -1,25 +1,28 @@
-#ifndef VIDEO_CONTROLLER
-#define VIDEO_CONTROLLER
+#ifndef __VIDEO_CONTROLLER__
+#define __VIDEO_CONTROLLER__
 
-#ifndef USED_OPENCV
-#define USED_OPENCV
+#ifndef __USED_OPENCV__
+#define __USED_OPENCV__
 #include <opencv2/opencv.hpp>
 using namespace cv;
-#endif // USERD_OPENCV
+#endif
 
+#ifndef __USERD__STRING__
+#define __USERD__STRING__
 #include <string>
 using namespace std;
+#endif // __USERD__STRING__
 
 class VideoController{
 public:
     static cv::VideoCapture cap;
 
 private:
-    string win_id;
-    cv::Mat cur_frame;
+    string _winid;
+    cv::Mat _curframe;
 
 public:
-    explicit VideoController(const string w_id);
+    explicit VideoController(const string winid);
     ~VideoController();
 
 public:

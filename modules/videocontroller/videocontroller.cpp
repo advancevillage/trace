@@ -1,13 +1,13 @@
-#ifndef USED_OPENCV
+#ifndef __USED_OPENCV__
 #include <opencv2/opencv.hpp>
 using namespace cv;
 #endif // USED_OPENCV
 
-#ifndef VIDEO_CONTROLLER
+#ifndef __VIDEO_CONTROLLER__
 #include "videocontroller.h"
 #endif //
 
-VideoController::VideoController(const string w_id):win_id(w_id){
+VideoController::VideoController(const string winid):_winid(winid){
 
 }
 
@@ -16,14 +16,14 @@ VideoController::~VideoController(){
 }
 
 void VideoController::RegisterWindow()const {
-    cv::namedWindow(this->win_id, WINDOW_AUTOSIZE);
+    cv::namedWindow(this->_winid, WINDOW_AUTOSIZE);
 }
 
 void VideoController::SetCurFrame(const cv::Mat frame){
-    this->cur_frame = frame;
+    this->_curframe = frame;
 }
 
 void VideoController::ShowWindow(){
-    cv::imshow(this->win_id, this->cur_frame);
+    cv::imshow(this->_winid, this->_curframe);
     cv::waitKey(5);
 }
