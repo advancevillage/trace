@@ -31,7 +31,8 @@ public:
     bool Full()const;
     bool Empty()const;
     unsigned int GetSize()const;
-    void Add(cv::Mat orgframe);
+    void Push(cv::Mat orgframe);
+    void Pop(const int nc = 2);
     void SetBase(const unsigned int base);
     void SetAvailable(const bool available);
     bool GetAvailable()const;

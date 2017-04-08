@@ -43,8 +43,13 @@ unsigned int Preprocessor::GetBase()const{
     return this->_base;
 }
 
-void Preprocessor::Add(cv::Mat orgframe){
+void Preprocessor::Push(cv::Mat orgframe){
     this->_orgframes.push_back(orgframe);
+}
+
+void Preprocessor::Pop(const int nc){
+    for(int i =0; !this->Empty() && i < nc; ++i)
+        this->_orgframes.pop_front();
 }
 
 void Preprocessor::SetAvailable(const bool available){
@@ -62,16 +67,28 @@ void Preprocessor::ClearAll(){
 void Preprocessor::ImageAvg(){
     int rows = this->_rows;
     int cols = this->_cols * this->_channels;
+    vector<uchar*> imagesptr;
     for(int i = 0; i < rows; ++i){
-        for(int j = 0; j < cols; ++j){
-
+        for(unsigned int base = 0; base < this->GetSize(); ++base){
+            imagesptr.push_back(this->_orgframes.at(base).ptr<uchar>(i));
         }
+        uchar* data = this->_frame.ptr<uchar>(i);
+        for(int j = 0; j < cols; ++j){
+            unsigned int sum =0;
+            for(unsigned int base = 0; base < this->GetSize(); ++base){
+                sum += static_cast<unsigned int>(imagesptr.at(base)[j]);
+            }
+            *data++ = static_cast<uchar>(sum/this->GetSize());
+        }
+        imagesptr.clear();
     }
+    //cv::GaussianBlur(this->_frame, this->_frame, cv::Size(3,3),0,0);
 }
 
 void Preprocessor::Process(cv::Mat& orgframe){
     if(!this->Full()) return;
     this->ImageAvg();
     this->_available = true;
-    this->ClearAll();
+//    this->ClearAll();
+    this->Pop(this->_base/4);
 }
