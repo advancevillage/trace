@@ -15,15 +15,20 @@ int main(int argc, char* argv[]){
         return (-1);
     VideoController vcOrigin("origin");
     cv::Mat orgframe;
-
-    //read first frame to initialize system
     VideoController::cap.read(orgframe);
-
+    //read first frame to initialize system
+    const unsigned int base = 4;
+    Preprocessor prepro(orgframe.rows, orgframe.cols, orgframe.channels(), orgframe.type(),base);
 
     while(VideoController::cap.read(orgframe) && !orgframe.empty()){
 
         //preprocessor
-
+        prepro.Process(orgframe);
+        if(prepro.GetAvailable()){
+            //TO DO
+        }
+        prepro.Add(orgframe);
+        prepro.SetAvailable(false);
         //show window
         vcOrigin.SetCurFrame(orgframe);
         vcOrigin.RegisterWindow();

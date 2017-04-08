@@ -18,23 +18,28 @@ protected:
     int _rows;
     int _cols;
     int _channels;
+    int _type;
     unsigned int _base;
+    bool _available;
 
 public:
-    explicit Preprocessor(const int rows, const int cols, const int channels);
-    explicit Preprocessor(const int rows, const int cols, const int channels, const unsigned int base);
+    explicit Preprocessor(const int rows, const int cols, const int channels, const int type);
+    explicit Preprocessor(const int rows, const int cols, const int channels, const int type,const unsigned int base);
     ~Preprocessor();
 
 public:
     bool Full()const;
     bool Empty()const;
-    int GetSize()const;
+    unsigned int GetSize()const;
     void Add(cv::Mat orgframe);
     void SetBase(const unsigned int base);
+    void SetAvailable(const bool available);
+    bool GetAvailable()const;
+    void ClearAll();
     unsigned int GetBase()const;
     void ImageAvg();
     cv::Mat GetFrame()const;
-
+    void Process(cv::Mat& orgframe);
 };
 
 #endif // __PRE_PROCESSOR__

@@ -2,11 +2,15 @@
 #include "preprocessor.h"
 #endif // __PRE__PROCESSOR__
 
-Preprocessor::Preprocessor(const int rows, const int cols, const int channels):_rows(rows),_cols(cols),_channels(channels), _base(2){
+Preprocessor::Preprocessor(const int rows, const int cols, const int channels, const int type)
+:_frame(rows, cols, type, cv::Scalar::all(0))
+,_rows(rows),_cols(cols),_channels(channels),_type(type), _base(2),_available(false){
 
 }
 
-Preprocessor::Preprocessor(const int rows, const int cols, const int channels, const unsigned int base):_rows(rows),_cols(cols),_channels(channels),_base(base){
+Preprocessor::Preprocessor(const int rows, const int cols, const int channels, const int type, const unsigned int base)
+:_frame(rows, cols, type, cv::Scalar::all(0))
+,_rows(rows),_cols(cols),_channels(channels),_type(type),_base(base),_available(false){
 
 }
 
@@ -14,8 +18,8 @@ Preprocessor::~Preprocessor(){
 
 }
 
-int Preprocessor::GetSize()const{
-    return (int)this->_orgframes.size();
+unsigned int Preprocessor::GetSize()const{
+    return this->_orgframes.size();
 }
 
 bool Preprocessor::Full()const{
@@ -43,12 +47,31 @@ void Preprocessor::Add(cv::Mat orgframe){
     this->_orgframes.push_back(orgframe);
 }
 
+void Preprocessor::SetAvailable(const bool available){
+    this->_available = available;
+}
+
+bool Preprocessor::GetAvailable()const{
+    return this->_available;
+}
+
+void Preprocessor::ClearAll(){
+    this->_orgframes.clear();
+}
+
 void Preprocessor::ImageAvg(){
-    if(1 == this->_channels){
+    int rows = this->_rows;
+    int cols = this->_cols * this->_channels;
+    for(int i = 0; i < rows; ++i){
+        for(int j = 0; j < cols; ++j){
 
+        }
     }
+}
 
-    if(3 == this->_channels){
-
-    }
+void Preprocessor::Process(cv::Mat& orgframe){
+    if(!this->Full()) return;
+    this->ImageAvg();
+    this->_available = true;
+    this->ClearAll();
 }
