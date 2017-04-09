@@ -6,7 +6,7 @@
 #include "preprocessor.h"
 #include "fgd.h"
 //camera id
-#define CAMERA_ID 1
+#define CAMERA_ID 0
 
 cv::VideoCapture VideoController::cap(CAMERA_ID);
 
