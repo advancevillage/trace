@@ -5,6 +5,7 @@
 #include "objectcontroller.h"
 #include "preprocessor.h"
 #include "fgd.h"
+#include "od.h"
 //camera id
 #define CAMERA_ID 0
 

@@ -1,7 +1,8 @@
 #ifndef __FOREGROUND__DETECTION__
 #define __FOREGROUND__DETECTION__
 
-#ifndef __USED_OPENCV__
+#ifndef __USED__OPENCV__
+#define __USED__OPENCV__
 #include <opencv2/opencv.hpp>
 using namespace cv;
 #endif // __USED_OPENCV__

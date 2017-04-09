@@ -1,7 +1,8 @@
 #ifndef __PRE__PROCESSOR__
 #define __PRE__PROCESSOR__
 
-#ifndef __USED_OPENCV__
+#ifndef __USED__OPENCV__
+#define __USED__OPENCV__
 #include <opencv2/opencv.hpp>
 #endif // __USED_OPENCV__
 

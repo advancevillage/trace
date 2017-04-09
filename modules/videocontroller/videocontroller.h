@@ -1,8 +1,8 @@
 #ifndef __VIDEO_CONTROLLER__
 #define __VIDEO_CONTROLLER__
 
-#ifndef __USED_OPENCV__
-#define __USED_OPENCV__
+#ifndef __USED__OPENCV__
+#define __USED__OPENCV__
 #include <opencv2/opencv.hpp>
 using namespace cv;
 #endif
