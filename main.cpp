@@ -19,12 +19,11 @@ int main(int argc, char* argv[]){
     cv::Mat orgframe;
     VideoController::cap.read(orgframe);
     //read first frame to initialize system
-    const unsigned int base = 10;
-    const unsigned char limit = 32;
+    const unsigned int base = 8;
+    const unsigned char limit = 30;
     Preprocessor prepro(orgframe.rows, orgframe.cols, orgframe.channels(), orgframe.type(),base);
     FGDetection  fgd(orgframe.rows, orgframe.cols, limit);
     while(VideoController::cap.read(orgframe) && !orgframe.empty()){
-
         //preprocessor
         prepro.Process(orgframe);
         if(prepro.GetAvailable()){

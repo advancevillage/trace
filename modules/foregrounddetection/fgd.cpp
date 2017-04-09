@@ -54,6 +54,7 @@ void FGDetection::Binarization(){
             }
         }
     }
+    cv::medianBlur(this->_binImage, this->_binImage, 3);
 }
 
 void FGDetection::SetLimit(const unsigned char limit){
@@ -71,6 +72,6 @@ cv::Mat FGDetection::GetFDMask()const{
 void FGDetection::Process(cv::Mat frame){
     this->GrayProcess(frame);
     this->FramesDiff();
-//    this->Binarization();
-    this->_preframe = this->_curframe;
+    this->Binarization();
+    this->_curframe.copyTo(this->_preframe);
 }
