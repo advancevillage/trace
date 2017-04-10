@@ -7,7 +7,15 @@
 using namespace cv;
 #endif // __USED_OPENCV__
 
+#ifndef __USED__STRING__
+#define __USED__STRING__
+#include <string>
+using namespace std;
+#endif // __USED__STRING__
+
 class FGDetection{
+public:
+    static unsigned int nthframe;
 protected:
     cv::Mat _preframe;
     cv::Mat _curframe;
@@ -15,6 +23,9 @@ protected:
     int _rows;
     int _cols;
     unsigned char _limit;
+    unsigned char _avg;
+    double _variance;
+
 
 public:
     explicit FGDetection(const int rows, const int cols);
@@ -30,6 +41,9 @@ public:
     unsigned char GetLimit()const;
     cv::Mat GetFDMask()const;
 
+private:
+    void ComputeAvg();
+    void ComputeVariance();
 
 };
 

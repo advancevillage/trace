@@ -10,6 +10,7 @@
 #define CAMERA_ID 0
 
 cv::VideoCapture VideoController::cap(CAMERA_ID);
+unsigned int FGDetection::nthframe = 0;
 
 int main(int argc, char* argv[]){
 
@@ -21,7 +22,7 @@ int main(int argc, char* argv[]){
     VideoController::cap.read(orgframe);
     //read first frame to initialize system
     const unsigned int base = 8;
-    const unsigned char limit = 30;
+    const unsigned char limit = 32;
     Preprocessor prepro(orgframe.rows, orgframe.cols, orgframe.channels(), orgframe.type(),base);
     FGDetection  fgd(orgframe.rows, orgframe.cols, limit);
     while(VideoController::cap.read(orgframe) && !orgframe.empty()){
