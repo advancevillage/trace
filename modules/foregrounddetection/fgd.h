@@ -26,7 +26,6 @@ protected:
     unsigned char _avg;
     double _variance;
 
-
 public:
     explicit FGDetection(const int rows, const int cols);
     explicit FGDetection(const int rows, const int cols, const unsigned char limit);
