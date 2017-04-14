@@ -28,8 +28,8 @@ public:
     void Process(cv::Mat mask);
     void SetAllShow(const bool ishow);
     void ObjectDetection(cv::Mat mask);
-    ObjectArray GetObjectArray();
-    ObjectController GetObjectController();
+    ObjectArray& GetObjectArray();
+    ObjectController& GetObjectController();
 };
 
 

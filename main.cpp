@@ -6,6 +6,7 @@
 #include "preprocessor.h"
 #include "fgd.h"
 #include "od.h"
+#include "ot.h"
 //camera id
 #define CAMERA_ID 0
 
@@ -17,7 +18,7 @@ int main(int argc, char* argv[]){
     if(!VideoController::cap.isOpened())
         return (-1);
     VideoController vcOrigin("origin");
-    VideoController vcFrame("foreground detection");
+    VideoController vcFrame("trace");
     cv::Mat orgframe;
     VideoController::cap.read(orgframe);
     //read first frame to initialize system
@@ -25,15 +26,22 @@ int main(int argc, char* argv[]){
     const unsigned char limit = 32;
     Preprocessor prepro(orgframe.rows, orgframe.cols, orgframe.channels(), orgframe.type(),base);
     FGDetection  fgd(orgframe.rows, orgframe.cols, limit);
+    ODetection od;
+    OTracker ot;
     while(VideoController::cap.read(orgframe) && !orgframe.empty()){
         //preprocessor
         prepro.Process(orgframe);
         if(prepro.GetAvailable()){
             //TO DO
-            cv::Mat frame = prepro.GetFrame();
-            fgd.Process(frame);
-            frame = fgd.GetFDMask();
-            vcFrame.SetCurFrame(frame);
+            cv::Mat curframe = prepro.GetFrame();
+            fgd.Process(curframe);
+            cv::Mat mask = fgd.GetFDMask();
+            //object detection
+            od.Process(mask);
+            //object tracker
+            ot.Process(curframe, od.GetObjectController());
+            curframe = ot.GetFrame();
+            vcFrame.SetCurFrame(curframe);
             vcFrame.RegisterWindow();
             vcFrame.ShowWindow();
         }
