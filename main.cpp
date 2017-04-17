@@ -9,7 +9,7 @@
 #include "ot.h"
 
 //camera id
-#define CAMERA_ID 0
+#define CAMERA_ID 1
 
 cv::VideoCapture VideoController::cap(CAMERA_ID);
 unsigned int FGDetection::nthframe = 0;

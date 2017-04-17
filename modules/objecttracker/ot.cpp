@@ -26,8 +26,14 @@ void OTracker::ObjectTracker(){
         ObjectNode objnode = this->_objctl.GetObjectNodeArray().at(i);
         cv::Point fir =  objnode.GetPoint();
         cv::Point sec(objnode.GetX()+objnode.GetWidth(), objnode.GetY()+objnode.GetHeight());
-        cv::rectangle(this->_curframe, fir, sec, objnode.GetColor());
+        cv::rectangle(this->_curframe, fir, sec, objnode.GetColor(), CV_FILLED);
     }
+//    for(int i = 0; i < this->_objctl.GetSize(); ++i){
+//        ObjectNode objnode = this->_objctl.GetObjectNodeArray().at(i);
+//        cv::Point center =  objnode.GetPoint();
+//        int radius = objnode.GetWidth()/2;
+//        cv::circle(this->_curframe,center,radius,objnode.GetColor());
+//    }
 }
 
 cv::Mat OTracker::GetFrame()const{
