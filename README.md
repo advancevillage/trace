@@ -72,7 +72,7 @@ Trace， 本项目的效果是单摄像头动态物体跟踪。摄像头采用US
 
 version 1.0 静止背景，只能跟踪一个动态目标
 
-<iframe height=640  width=480  src="http://ocnjj80rb.bkt.clouddn.com/trace/result.mp4" frameborder=0 allowfullscreen></iframe>
+<video width="480" height="640" src="http://ocnjj80rb.bkt.clouddn.com/trace/trace.mp4"  autoplay controls preload="none"></video>
 
 <h2  id="6">LCIENCE</h2>
 CUG@2016 SUN-HE
