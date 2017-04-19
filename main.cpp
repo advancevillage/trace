@@ -24,7 +24,7 @@ int main(int argc, char* argv[]){
     VideoController::cap.read(orgframe);
     //read first frame to initialize system
     const unsigned int base = 8;
-    const unsigned char limit = 32;
+    const unsigned char limit = 64;
     Preprocessor prepro(orgframe.rows, orgframe.cols, orgframe.channels(), orgframe.type(),base);
     FGDetection  fgd(orgframe.rows, orgframe.cols, limit);
     ODetection od;
